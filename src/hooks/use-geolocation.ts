@@ -24,7 +24,7 @@ export function useGeolocation() {
 
     if (!navigator.geolocation) {
       setLocationData({
-        coordinates: fallbackCoordinates,
+        coordinates: null,
         error: "Geolocation is not supported by your browser",
         isLoading: false,
       });
@@ -62,7 +62,8 @@ export function useGeolocation() {
 
         setLocationData({
           coordinates: fallbackCoordinates,
-          error: errorMessage,
+        //   error: errorMessage,
+          error: null,
           isLoading: false,
         });
       },
@@ -74,13 +75,12 @@ export function useGeolocation() {
     );
   };
 
-  // Get location on component mount
   useEffect(() => {
     getLocation();
   }, []);
 
   return {
     ...locationData,
-    getLocation, // Expose method to manually refresh location
+    getLocation, 
   };
 }
