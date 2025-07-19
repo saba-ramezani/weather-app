@@ -1,3 +1,4 @@
+import CurrentWeather from "@/components/CurrentWeather"
 import LoadingSkeleton from "@/components/LoadingSkeleton"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
@@ -105,6 +106,19 @@ const Dashboard = () => {
             
             <RefreshCcw className="h-4 w-4" />
           </Button>
+        </div>
+
+        <div className="grid gap-6">
+          <div>
+            <CurrentWeather
+              data={weatherQuery.data}
+              locationName={locationName} 
+            />
+          </div>
+
+          <div>
+
+          </div>
         </div>
       </div>
     )
