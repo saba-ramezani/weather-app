@@ -1,4 +1,5 @@
 import CurrentWeather from "@/components/CurrentWeather"
+import HourlyTemperature from "@/components/HourlyTemperature"
 import LoadingSkeleton from "@/components/LoadingSkeleton"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
@@ -109,10 +110,14 @@ const Dashboard = () => {
         </div>
 
         <div className="grid gap-6">
-          <div>
+          <div className="flex flex-col lg:flex-row gap-4">
             <CurrentWeather
               data={weatherQuery.data}
               locationName={locationName} 
+            />
+
+            <HourlyTemperature
+              data={forecastQuery.data}
             />
           </div>
 
