@@ -2,10 +2,13 @@ import { useState } from "react"
 import { Button } from "./ui/button"
 import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "./ui/command"
 import { Search } from "lucide-react";
+import { useLocationSearch } from "@/hooks/use-weather";
 
 const CitySearch = () => {
     const [open, setOpen] = useState(false);
-    const [query, setQuery] = useState("")
+    const [query, setQuery] = useState("");
+    const {data: locations, isLoading} = useLocationSearch(query)
+    console.log(locations)
   return (
     <>
         <Button
@@ -17,13 +20,17 @@ const CitySearch = () => {
             Search cities...
         </Button>
         <CommandDialog open={open} onOpenChange={setOpen}>
-            <CommandInput placeholder="Type a command or search..." />
+            <CommandInput 
+            placeholder="Search cities..."
+            value={query}
+            onValueChange={setQuery}
+            />
             <CommandList>
-                <CommandEmpty>No results found.</CommandEmpty>
+                {query.length > 2 && !isLoading && (<CommandEmpty>No cities found.</CommandEmpty>)}
                 <CommandGroup heading="Suggestions">
-                <CommandItem>Calendar</CommandItem>
-                <CommandItem>Search Emoji</CommandItem>
-                <CommandItem>Calculator</CommandItem>
+                    <CommandItem>Calendar</CommandItem>
+                    <CommandItem>Search Emoji</CommandItem>
+                    <CommandItem>Calculator</CommandItem>
                 </CommandGroup>
             </CommandList>
         </CommandDialog>
