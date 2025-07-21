@@ -60,7 +60,7 @@ const WeatherForecast = ({data}: WeatherForecastProps) => {
                     return (
                         <div 
                         key={day.date}
-                        className="grid grid-cols-3 items-center gap-4 rounded-lg border p-4"
+                        className="flex flex-col md:flex-row justify-between items-center gap-4 rounded-lg border p-4"
                         >
                             <div>
                                 <p className="font-medium">{format(new Date(day.date * 1000), "EEE, MMM d")}</p>
