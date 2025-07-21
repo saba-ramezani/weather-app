@@ -3,14 +3,18 @@ import { Button } from "./ui/button"
 import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from "./ui/command"
 import { Loader2, Search } from "lucide-react";
 import { useLocationSearch } from "@/hooks/use-weather";
+import { useNavigate } from "react-router-dom";
 
 const CitySearch = () => {
     const [open, setOpen] = useState(false);
     const [query, setQuery] = useState("");
+    const navigate = useNavigate();
     const {data: locations, isLoading} = useLocationSearch(query)
 
-    const handleSelect = () => {
-
+    const handleSelect = (cityData: string) => {
+        const [lat, lon, name, country] = cityData.split("|")
+        setOpen(false)
+        navigate(`/city/${name}??lat=${lat}&lon=${lon}`)
     }
     console.log(locations)
   return (
@@ -49,6 +53,7 @@ const CitySearch = () => {
                         {locations.map((location) => {
                             return (
                                 <CommandItem
+                                className="cursor-pointer"
                                 key={`${location.lat}-${location.lon}`}
                                 value={`${location.lat}|${location.lon}|${location.name}|${location.country}`}
                                 onSelect={handleSelect}
