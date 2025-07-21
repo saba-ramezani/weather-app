@@ -20,21 +20,21 @@ const Header = () => {
                 />
             </Link>
             <div className="flex gap-4">
-             {/* search */}
-             <CitySearch />
-             {/* theme toggle */}
-             <div 
-                onClick={() => setTheme(isDark ? "light" : "dark")} 
-                className={`cursor-pointer flex items-center transition-transform duration-500
-                    ${isDark ? "rotate-180" : "rotate-0"}
-                `}>
-                {isDark ? 
-                    <Sun className="h-6 w-6 text-yellow-500 rotate-0 transition-all" /> 
-                : 
-                    <Moon className="h-6 w-6 text-blue-500 rotate-0 transition-all" />
-                }
-             </div>
-        </div>
+                {/* search */}
+                <CitySearch />
+                {/* theme toggle */}
+                <div 
+                    onClick={() => setTheme(isDark ? "light" : "dark")} 
+                    className={`cursor-pointer flex items-center transition-transform duration-500
+                        ${isDark ? "rotate-180" : "rotate-0"}
+                    `}>
+                    {isDark ? 
+                        <Sun className="h-6 w-6 text-yellow-500 rotate-0 transition-all" /> 
+                    : 
+                        <Moon className="h-6 w-6 text-blue-500 rotate-0 transition-all" />
+                    }
+                </div>
+            </div>
         </div>
     </header>
   )
