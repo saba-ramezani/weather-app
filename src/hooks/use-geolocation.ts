@@ -43,22 +43,23 @@ export function useGeolocation() {
         });
       },
       (error) => {
-        let errorMessage: string;
+        console.log(error)
+        // let errorMessage: string;
 
-        switch (error.code) {
-          case error.PERMISSION_DENIED:
-            errorMessage =
-              "Location permission denied. Please enable location access.";
-            break;
-          case error.POSITION_UNAVAILABLE:
-            errorMessage = "Location information is unavailable.";
-            break;
-          case error.TIMEOUT:
-            errorMessage = "Location request timed out.";
-            break;
-          default:
-            errorMessage = "An unknown error occurred.";
-        }
+        // switch (error.code) {
+        //   case error.PERMISSION_DENIED:
+        //     errorMessage =
+        //       "Location permission denied. Please enable location access.";
+        //     break;
+        //   case error.POSITION_UNAVAILABLE:
+        //     errorMessage = "Location information is unavailable.";
+        //     break;
+        //   case error.TIMEOUT:
+        //     errorMessage = "Location request timed out.";
+        //     break;
+        //   default:
+        //     errorMessage = "An unknown error occurred.";
+        // }
 
         setLocationData({
           coordinates: fallbackCoordinates,
